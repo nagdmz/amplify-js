@@ -1038,7 +1038,11 @@ export const getIndexFromAssociation = (
 		indexName = src;
 	}
 
-	const associationIndex = indexes.find(([idxName]) => idxName === indexName);
+	const associationIndex = indexes.find(
+		([idxName]) =>
+			idxName === indexName ||
+			idxName.split(IDENTIFIER_KEY_SEPARATOR)[0] === indexName // index name with sort key fields
+	);
 	return associationIndex && associationIndex[0];
 };
 

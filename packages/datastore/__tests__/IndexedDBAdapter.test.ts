@@ -19,6 +19,8 @@ import {
 	DefaultPKChild,
 	CompositePKParent,
 	CompositePKChild,
+	Session,
+	SessionSection,
 	testSchema,
 	getDataStore,
 } from './helpers';
@@ -176,12 +178,17 @@ describe('IndexedDBAdapter tests', () => {
 		let Comment: PersistentModelConstructor<Comment>;
 		let post1Id: string;
 		let comment1Id: string;
+		let Session: PersistentModelConstructor<Session>;
+		let SessionSection: PersistentModelConstructor<SessionSection>;
+		let session1Id: string;
+		let sessionSection1Id: string;
 
 		beforeEach(async () => {
-			({ DataStore, User, Profile, Post, Comment } = getDataStore({
-				storageAdapterFactory: () =>
-					require('../src/storage/adapter/IndexedDBAdapter').default,
-			}));
+			({ DataStore, User, Profile, Post, Comment, Session, SessionSection } =
+				getDataStore({
+					storageAdapterFactory: () =>
+						require('../src/storage/adapter/IndexedDBAdapter').default,
+				}));
 
 			({ id: profile1Id } = await DataStore.save(
 				new Profile({ firstName: 'Rick', lastName: 'Bob' })
@@ -204,6 +211,13 @@ describe('IndexedDBAdapter tests', () => {
 
 			({ id: comment1Id } = await DataStore.save(
 				new Comment({ content: 'Test Content', post })
+			));
+
+			const session = await DataStore.save(new Session({ name: 'Test' }));
+			({ id: session1Id } = session);
+
+			({ id: sessionSection1Id } = await DataStore.save(
+				new SessionSection({ start: 0, end: 1, sessionID: session.id })
 			));
 		});
 
@@ -247,6 +261,30 @@ describe('IndexedDBAdapter tests', () => {
 			// both should be undefined, even though we only explicitly deleted the post
 			expect(post).toBeUndefined();
 			expect(comment).toBeUndefined();
+		});
+
+		it('Should perform a cascading delete on a record with a Has Many relationship with gsi sort key', async () => {
+			let session = (await DataStore.query(Session, session1Id))!;
+			let sessionSection = (await DataStore.query(
+				SessionSection,
+				sessionSection1Id
+			))!;
+
+			// double-checking that both of the records exist at first
+			expect(session.id).toEqual(session1Id);
+			expect(sessionSection.id).toEqual(sessionSection1Id);
+
+			await DataStore.delete(Session, session.id);
+
+			session = (await DataStore.query(Session, session1Id))!;
+			sessionSection = (await DataStore.query(
+				SessionSection,
+				sessionSection1Id
+			))!;
+
+			// both should be undefined, even though we only explicitly deleted the session
+			expect(session).toBeUndefined();
+			expect(sessionSection).toBeUndefined();
 		});
 	});
 

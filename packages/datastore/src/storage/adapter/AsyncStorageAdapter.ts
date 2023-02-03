@@ -629,10 +629,18 @@ export class AsyncStorageAdapter implements Adapter {
 						const allRecords = await this.db.getAll(storeName);
 
 						const indices = index!.split(IDENTIFIER_KEY_SEPARATOR);
+						console.log(indices);
 
-						const childRecords = allRecords.filter(childItem =>
-							indices.every(index => keyValues.includes(childItem[index]))
-						) as T[];
+						console.log(allRecords);
+						console.log(keyValues);
+
+						const childRecords = allRecords.filter(childItem => {
+							console.log('childItem');
+							console.log(childItem);
+							return indices.every(index =>
+								keyValues.includes(childItem[index])
+							);
+						}) as T[];
 
 						// instantiate models before passing to deleteTraverse
 						// necessary for extracting PK values via getIndexKeyValuesFromModel

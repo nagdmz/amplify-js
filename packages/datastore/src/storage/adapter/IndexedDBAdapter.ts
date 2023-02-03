@@ -97,6 +97,7 @@ class IndexedDBAdapter implements Adapter {
 			this.schema.namespaces[namespaceName],
 			modelConstructor.name
 		);
+		console.log(keys);
 
 		return extractPrimaryKeyValues(model, keys);
 	}
@@ -1071,13 +1072,31 @@ class IndexedDBAdapter implements Adapter {
 									.indexes,
 								associatedWith!
 							);
+						console.log(index);
 						const keyValues = this.getIndexKeyValuesFromModel(model);
+						console.log(keyValues);
+						console.log(this.canonicalKeyPath(keyValues));
+						console.log(
+							'full index',
+							await this.db
+								.transaction(storeName, 'readwrite')
+								.objectStore(storeName)
+								.index(index as string)
+						);
+						console.log(
+							await this.db
+								.transaction(storeName, 'readwrite')
+								.objectStore(storeName)
+								.index(index as string)
+								.getAll()
+						);
 
 						const childRecords = await this.db
 							.transaction(storeName, 'readwrite')
 							.objectStore(storeName)
 							.index(index as string)
 							.getAll(this.canonicalKeyPath(keyValues));
+						console.log(childRecords);
 
 						// instantiate models before passing to deleteTraverse
 						// necessary for extracting PK values via getIndexKeyValuesFromModel

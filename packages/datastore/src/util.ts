@@ -890,6 +890,9 @@ export const extractPrimaryKeyValues = <T extends PersistentModel>(
 	model: T,
 	keyFields: string[]
 ): string[] => {
+	console.log('extractPrimaryKeyValues');
+	console.log(keyFields);
+	console.log(model);
 	return keyFields.map(key => model[key]);
 };
 
@@ -1043,6 +1046,7 @@ export const getIndexFromAssociation = (
 			idxName === indexName ||
 			idxName.split(IDENTIFIER_KEY_SEPARATOR)[0] === indexName // index name with sort key fields
 	);
+	console.log(associationIndex);
 	return associationIndex && associationIndex[0];
 };
 

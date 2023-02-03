@@ -1022,6 +1022,8 @@ export function getDataStore({
 		DefaultPKHasOneChild,
 		CompositePKParent,
 		CompositePKChild,
+		Session,
+		SessionSection,
 	} = classes as {
 		ModelWithBoolean: PersistentModelConstructor<ModelWithBoolean>;
 		Blog: PersistentModelConstructor<Blog>;
@@ -1045,6 +1047,8 @@ export function getDataStore({
 		DefaultPKHasOneChild: PersistentModelConstructor<DefaultPKHasOneChild>;
 		CompositePKParent: PersistentModelConstructor<CompositePKParent>;
 		CompositePKChild: PersistentModelConstructor<CompositePKChild>;
+		Session: PersistentModelConstructor<Session>;
+		SessionSection: PersistentModelConstructor<SessionSection>;
 	};
 
 	return {
@@ -1075,6 +1079,8 @@ export function getDataStore({
 		DefaultPKHasOneChild,
 		CompositePKParent,
 		CompositePKChild,
+		Session,
+		SessionSection,
 	};
 }
 
@@ -1566,6 +1572,43 @@ export declare class ChildSansBelongsTo {
 			draft: MutableModel<ChildSansBelongsTo>
 		) => MutableModel<ChildSansBelongsTo> | void
 	): ChildSansBelongsTo;
+}
+
+export declare class Session {
+	readonly [__modelMeta__]: {
+		identifier: ManagedIdentifier<Session, 'id'>;
+		readOnlyFields: 'createdAt' | 'updatedAt';
+	};
+	readonly id: string;
+	readonly name?: string | null;
+	readonly sections: AsyncCollection<SessionSection>;
+	readonly createdAt?: string | null;
+	readonly updatedAt?: string | null;
+	constructor(init: ModelInit<Session>);
+	static copyOf(
+		source: Session,
+		mutator: (draft: MutableModel<Session>) => MutableModel<Session> | void
+	): Session;
+}
+
+export declare class SessionSection {
+	readonly [__modelMeta__]: {
+		identifier: ManagedIdentifier<SessionSection, 'id'>;
+		readOnlyFields: 'createdAt' | 'updatedAt';
+	};
+	readonly id: string;
+	readonly sessionID: string;
+	readonly start: number;
+	readonly end: number;
+	readonly createdAt?: string | null;
+	readonly updatedAt?: string | null;
+	constructor(init: ModelInit<SessionSection>);
+	static copyOf(
+		source: SessionSection,
+		mutator: (
+			draft: MutableModel<SessionSection>
+		) => MutableModel<SessionSection> | void
+	): SessionSection;
 }
 
 type LegacyJSONBlogMetaData = {
@@ -3282,6 +3325,127 @@ export function testSchema(): Schema {
 								'compositePKParentChildrenSansBelongsToCustomId',
 								'compositePKParentChildrenSansBelongsToContent',
 							],
+						},
+					},
+				],
+			},
+			Session: {
+				name: 'Session',
+				fields: {
+					id: {
+						name: 'id',
+						isArray: false,
+						type: 'ID',
+						isRequired: true,
+						attributes: [],
+					},
+					name: {
+						name: 'name',
+						isArray: false,
+						type: 'String',
+						isRequired: false,
+						attributes: [],
+					},
+					sections: {
+						name: 'sections',
+						isArray: true,
+						type: {
+							model: 'SessionSection',
+						},
+						isRequired: true,
+						attributes: [],
+						isArrayNullable: true,
+						association: {
+							connectionType: 'HAS_MANY',
+							associatedWith: ['sessionID'],
+						},
+					},
+					createdAt: {
+						name: 'createdAt',
+						isArray: false,
+						type: 'AWSDateTime',
+						isRequired: false,
+						attributes: [],
+						isReadOnly: true,
+					},
+					updatedAt: {
+						name: 'updatedAt',
+						isArray: false,
+						type: 'AWSDateTime',
+						isRequired: false,
+						attributes: [],
+						isReadOnly: true,
+					},
+				},
+				syncable: true,
+				pluralName: 'Sessions',
+				attributes: [
+					{
+						type: 'model',
+						properties: {},
+					},
+				],
+			},
+			SessionSection: {
+				name: 'SessionSection',
+				fields: {
+					id: {
+						name: 'id',
+						isArray: false,
+						type: 'ID',
+						isRequired: true,
+						attributes: [],
+					},
+					sessionID: {
+						name: 'sessionID',
+						isArray: false,
+						type: 'ID',
+						isRequired: true,
+						attributes: [],
+					},
+					start: {
+						name: 'start',
+						isArray: false,
+						type: 'Float',
+						isRequired: true,
+						attributes: [],
+					},
+					end: {
+						name: 'end',
+						isArray: false,
+						type: 'Float',
+						isRequired: true,
+						attributes: [],
+					},
+					createdAt: {
+						name: 'createdAt',
+						isArray: false,
+						type: 'AWSDateTime',
+						isRequired: false,
+						attributes: [],
+						isReadOnly: true,
+					},
+					updatedAt: {
+						name: 'updatedAt',
+						isArray: false,
+						type: 'AWSDateTime',
+						isRequired: false,
+						attributes: [],
+						isReadOnly: true,
+					},
+				},
+				syncable: true,
+				pluralName: 'SessionSections',
+				attributes: [
+					{
+						type: 'model',
+						properties: {},
+					},
+					{
+						type: 'key',
+						properties: {
+							name: 'bySession',
+							fields: ['sessionID', 'start'],
 						},
 					},
 				],

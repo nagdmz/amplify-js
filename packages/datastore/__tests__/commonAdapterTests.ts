@@ -738,7 +738,9 @@ export function addCommonQueryTests({
 			// populated, so we need a different testing pattern.
 			// Originally thought to be "extra" testing, but showed that we were
 			// not previously testing *required* relationships.
-			modelNamesToTest = modelNamesToTest.filter(n => !n.startsWith('Mtm'));
+			modelNamesToTest = modelNamesToTest.filter(
+				n => !n.startsWith('Mtm') && n !== 'Session' && n !== 'SessionSection'
+			);
 		}
 
 		test('SANITY TEST - basic model', async () => {

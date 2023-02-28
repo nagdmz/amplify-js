@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 import * as Paho from '../vendor/paho-mqtt';
-import { Client as PahoClient } from '@types/paho-mqtt';
+import { Client as PahoClient } from 'paho-mqtt';
 import { v4 as uuid } from 'uuid';
 import Observable, { ZenObservable } from 'zen-observable-ts';
 

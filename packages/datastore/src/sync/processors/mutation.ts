@@ -344,6 +344,7 @@ class MutationProcessor {
 						// through generic params.
 						return [result, opName, modelDefinition] as any;
 					} catch (err) {
+						debugger;
 						if (err.errors && err.errors.length > 0) {
 							const [error] = err.errors;
 							const { originalError: { code = null } = {} } = error;
@@ -648,6 +649,8 @@ export const safeJitteredBackoff: typeof originalJitteredBackoff = (
 	error
 ) => {
 	const attemptResult = originalJitteredBackoff(attempt);
+
+	debugger;
 
 	// If this is the last attempt and it is a network error, we retry indefinitively every 5 minutes
 	if (attemptResult === false && error?.message === 'Network Error') {

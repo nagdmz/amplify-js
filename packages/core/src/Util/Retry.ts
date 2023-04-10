@@ -28,6 +28,8 @@ export async function retry<T>(
 		throw Error('functionToRetry must be a function');
 	}
 
+	debugger;
+
 	return new Promise(async (resolve, reject) => {
 		let attempt = 0;
 		let terminated = false;

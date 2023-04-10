@@ -227,9 +227,11 @@ export class SyncEngine {
 				// this explicitly with the context. it's already contained.
 				const startPromise = new Promise((doneStarting, failedStarting) => {
 					this.datastoreConnectivity.status().subscribe(
-						async ({ online }) =>
+						async ({ online, rtt }) =>
 							this.runningProcesses.isOpen &&
 							this.runningProcesses.add(async onTerminate => {
+								console.log(rtt);
+								debugger;
 								// From offline to online
 								if (online && !this.online) {
 									this.online = online;
@@ -238,6 +240,7 @@ export class SyncEngine {
 										type: ControlMessage.SYNC_ENGINE_NETWORK_STATUS,
 										data: {
 											active: this.online,
+											rtt,
 										},
 									});
 

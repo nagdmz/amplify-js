@@ -3,6 +3,7 @@ import Observable, { ZenObservable } from 'zen-observable-ts';
 
 type NetworkStatus = {
 	online: boolean;
+	rtt?: number;
 };
 
 export default class ReachabilityNavigator implements Reachability {
@@ -18,7 +19,8 @@ export default class ReachabilityNavigator implements Reachability {
 		const globalObj = isWebWorker() ? self : window;
 
 		return new Observable(observer => {
-			observer.next({ online: globalObj.navigator.onLine });
+			//@ts-ignore
+			observer.next({ online: globalObj.navigator.onLine, rtt: globalObj.navigator?.connection?.rtt });
 
 			const notifyOnline = () => observer.next({ online: true });
 			const notifyOffline = () => observer.next({ online: false });
@@ -32,9 +34,10 @@ export default class ReachabilityNavigator implements Reachability {
 				globalObj.removeEventListener('online', notifyOnline);
 				globalObj.removeEventListener('offline', notifyOffline);
 
-				ReachabilityNavigator._observers = ReachabilityNavigator._observers.filter(
-					_observer => _observer !== observer
-				);
+				ReachabilityNavigator._observers =
+					ReachabilityNavigator._observers.filter(
+						_observer => _observer !== observer
+					);
 			};
 		});
 	}
@@ -43,9 +46,10 @@ export default class ReachabilityNavigator implements Reachability {
 	private static _observerOverride(status: NetworkStatus): void {
 		for (const observer of ReachabilityNavigator._observers) {
 			if (observer.closed) {
-				ReachabilityNavigator._observers = ReachabilityNavigator._observers.filter(
-					_observer => _observer !== observer
-				);
+				ReachabilityNavigator._observers =
+					ReachabilityNavigator._observers.filter(
+						_observer => _observer !== observer
+					);
 				continue;
 			}
 			observer.next(status);

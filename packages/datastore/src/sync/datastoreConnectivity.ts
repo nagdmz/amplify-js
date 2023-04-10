@@ -9,6 +9,7 @@ const RECONNECTING_IN = 5000; // 5s this may be configurable in the future
 type ConnectionStatus = {
 	// Might add other params in the future
 	online: boolean;
+	rtt?: number;
 };
 
 export default class DataStoreConnectivity {
@@ -26,14 +27,17 @@ export default class DataStoreConnectivity {
 		if (this.observer) {
 			throw new Error('Subscriber already exists');
 		}
-		return new Observable((observer) => {
+		return new Observable(observer => {
 			this.observer = observer;
 			// Will be used to forward socket connection changes, enhancing Reachability
 
-			this.subscription = ReachabilityMonitor.subscribe(({ online }) => {
+			this.subscription = ReachabilityMonitor.subscribe(({ online, rtt }) => {
 				this.connectionStatus.online = online;
 
-				const observerResult = { ...this.connectionStatus }; // copyOf status
+				console.log(rtt);
+				debugger;
+
+				const observerResult = { ...this.connectionStatus, rtt }; // copyOf status
 
 				observer.next(observerResult);
 			});

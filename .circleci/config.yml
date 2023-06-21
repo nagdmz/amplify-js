@@ -2241,7 +2241,8 @@ workflows:
       - deploy:
           filters:
             <<: *releasable_branches
-          #requires:
+          requires:
+            - build
           # - unit_test
           # - bundle_test
           # - integ_react_delete_user

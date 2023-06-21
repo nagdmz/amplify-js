@@ -45,8 +45,13 @@
 		"lib-esm",
 		"src"
 	],
+	"devDependencies": {
+		"@aws-amplify/core": "scoped-poc"
+	},
+	"peerDependencies": {
+		"@aws-amplify/core": "5.x"
+	},
 	"dependencies": {
-		"@aws-amplify/core": "5.4.0",
 		"@aws-sdk/client-lex-runtime-service": "3.186.1",
 		"@aws-sdk/client-lex-runtime-v2": "3.186.1",
 		"base-64": "1.0.0",

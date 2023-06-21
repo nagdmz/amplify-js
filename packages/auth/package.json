@@ -67,15 +67,18 @@
     "lib-esm",
     "src"
   ],
+  "peerDependencies": {
+    "@aws-amplify/core": "5.x"
+  },
   "dependencies": {
-    "@aws-amplify/core": "5.4.0",
-    "amazon-cognito-identity-js": "6.2.0",
+    "amazon-cognito-identity-js": "scoped-poc",
     "tslib": "^1.8.0"
   },
   "devDependencies": {
     "@aws-sdk/client-cognito-identity-provider": "3.54.0",
     "@aws-sdk/client-cognito-identity": "3.54.0",
-    "@jest/test-sequencer": "^24.9.0"
+    "@jest/test-sequencer": "^24.9.0",
+    "@aws-amplify/core": "scoped-poc"
   },
   "size-limit": [
     {

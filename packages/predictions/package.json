@@ -44,9 +44,14 @@
 		"lib-esm",
 		"src"
 	],
+	"devDependencies": {
+		"@aws-amplify/core": "scoped-poc"
+	},
+	"peerDependencies": {
+		"@aws-amplify/core": "5.x"
+	},
 	"dependencies": {
-		"@aws-amplify/core": "5.4.0",
-		"@aws-amplify/storage": "5.4.0",
+		"@aws-amplify/storage": "scoped-poc",
 		"@aws-sdk/client-comprehend": "3.6.1",
 		"@aws-sdk/client-polly": "3.6.1",
 		"@aws-sdk/client-rekognition": "3.6.1",

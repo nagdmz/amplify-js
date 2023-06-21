@@ -45,8 +45,13 @@
 		"lib-esm",
 		"src"
 	],
+	"devDependencies": {
+		"@aws-amplify/core": "scoped-poc"
+	},
+	"peerDependencies": {
+		"@aws-amplify/core": "5.x"
+	},
 	"dependencies": {
-		"@aws-amplify/core": "5.4.0",
 		"@aws-sdk/client-location": "3.186.1",
 		"@turf/boolean-clockwise": "6.5.0",
 		"camelcase-keys": "6.2.2",

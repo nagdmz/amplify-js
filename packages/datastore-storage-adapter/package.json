@@ -34,9 +34,12 @@
 		"url": "https://github.com/aws/aws-amplify/issues"
 	},
 	"homepage": "https://aws-amplify.github.io/",
+	"peerDependencies": {
+		"@aws-amplify/core": "5.x"
+	},
 	"devDependencies": {
-		"@aws-amplify/core": "5.4.0",
-		"@aws-amplify/datastore": "4.5.0",
+		"@aws-amplify/core": "scoped-poc",
+		"@aws-amplify/datastore": "scoped-poc",
 		"@types/react-native-sqlite-storage": "5.0.1",
 		"expo-file-system": "13.1.4",
 		"expo-sqlite": "10.1.0",

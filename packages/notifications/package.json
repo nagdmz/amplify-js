@@ -49,13 +49,16 @@
 		"src"
 	],
 	"dependencies": {
-		"@aws-amplify/cache": "5.1.0",
-		"@aws-amplify/core": "5.4.0",
-		"@aws-amplify/rtn-push-notification": "1.1.1",
+		"@aws-amplify/cache": "scoped-poc",
+		"@aws-amplify/rtn-push-notification": "scoped-poc",
 		"lodash": "^4.17.21",
 		"uuid": "^3.2.1"
 	},
+	"peerDependencies": {
+		"@aws-amplify/core": "5.x"
+	},
 	"devDependencies": {
+		"@aws-amplify/core": "scoped-poc",
 		"@babel/plugin-proposal-class-properties": "^7.0.0",
 		"@babel/plugin-proposal-private-methods": "^7.0.0",
 		"@babel/plugin-proposal-private-property-in-object": "^7.0.0"

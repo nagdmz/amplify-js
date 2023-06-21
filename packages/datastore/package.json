@@ -46,7 +46,11 @@
 		"@types/uuid-validate": "^0.0.1",
 		"dexie": "3.2.2",
 		"dexie-export-import": "1.0.3",
+		"@aws-amplify/core": "scoped-poc",
 		"fake-indexeddb": "3.0.0"
+	},
+	"peerDependencies": {
+		"@aws-amplify/core": "5.x"
 	},
 	"files": [
 		"lib",
@@ -55,11 +59,10 @@
 		"ssr"
 	],
 	"dependencies": {
-		"@aws-amplify/api": "5.2.0",
-		"@aws-amplify/auth": "5.4.0",
-		"@aws-amplify/core": "5.4.0",
-		"@aws-amplify/pubsub": "5.2.0",
-		"amazon-cognito-identity-js": "6.2.0",
+		"@aws-amplify/api": "scoped-poc",
+		"@aws-amplify/auth": "scoped-poc",
+		"@aws-amplify/pubsub": "scoped-poc",
+		"amazon-cognito-identity-js": "scoped-poc",
 		"idb": "5.0.6",
 		"immer": "9.0.6",
 		"ulid": "2.3.0",

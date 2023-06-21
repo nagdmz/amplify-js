@@ -45,8 +45,13 @@
     "lib-esm",
     "src"
   ],
+  "peerDependencies": {
+		"@aws-amplify/core": "5.x"
+	},
+  "devDependencies": {
+    "@aws-amplify/core": "scoped-poc"
+  },
   "dependencies": {
-    "@aws-amplify/core": "5.4.0",
     "axios": "0.26.0",
     "tslib": "^1.8.0"
   },

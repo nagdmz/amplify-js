@@ -46,7 +46,7 @@
     "src"
   ],
   "peerDependencies": {
-		"@aws-amplify/core": "5.x"
+		"@aws-amplify/core": "^5.4.0 || 5.4.0"
 	},
   "devDependencies": {
     "@aws-amplify/core": "5.4.0"

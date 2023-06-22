@@ -48,7 +48,7 @@
 		"@aws-amplify/core": "5.4.0"
 	},
 	"peerDependencies": {
-		"@aws-amplify/core": "5.x"
+		"@aws-amplify/core": "^5.4.0 || 5.4.0"
 	},
 	"dependencies": {
 		"@aws-amplify/storage": "5.4.0",

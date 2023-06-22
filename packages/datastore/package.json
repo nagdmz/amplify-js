@@ -41,12 +41,12 @@
 	},
 	"homepage": "https://aws-amplify.github.io/",
 	"devDependencies": {
+		"@aws-amplify/core": "5.4.0",
 		"@react-native-community/netinfo": "4.7.0",
 		"@types/uuid": "3.4.6",
 		"@types/uuid-validate": "^0.0.1",
 		"dexie": "3.2.2",
 		"dexie-export-import": "1.0.3",
-		"@aws-amplify/core": "scoped-poc",
 		"fake-indexeddb": "3.0.0"
 	},
 	"peerDependencies": {
@@ -59,10 +59,10 @@
 		"ssr"
 	],
 	"dependencies": {
-		"@aws-amplify/api": "scoped-poc",
-		"@aws-amplify/auth": "scoped-poc",
-		"@aws-amplify/pubsub": "scoped-poc",
-		"amazon-cognito-identity-js": "scoped-poc",
+		"@aws-amplify/api": "5.2.0",
+		"@aws-amplify/auth": "5.4.0",
+		"@aws-amplify/pubsub": "5.2.0",
+		"amazon-cognito-identity-js": "6.2.0",
 		"idb": "5.0.6",
 		"immer": "9.0.6",
 		"ulid": "2.3.0",

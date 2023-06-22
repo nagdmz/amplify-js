@@ -46,7 +46,7 @@
 		"src"
 	],
 	"devDependencies": {
-		"@aws-amplify/core": "scoped-poc"
+		"@aws-amplify/core": "5.4.0"
 	},
 	"peerDependencies": {
 		"@aws-amplify/core": "5.x"

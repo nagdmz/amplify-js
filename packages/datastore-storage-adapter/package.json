@@ -38,8 +38,8 @@
 		"@aws-amplify/core": "5.x"
 	},
 	"devDependencies": {
-		"@aws-amplify/core": "scoped-poc",
-		"@aws-amplify/datastore": "scoped-poc",
+		"@aws-amplify/core": "5.4.0",
+		"@aws-amplify/datastore": "4.5.0",
 		"@types/react-native-sqlite-storage": "5.0.1",
 		"expo-file-system": "13.1.4",
 		"expo-sqlite": "10.1.0",

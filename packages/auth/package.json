@@ -71,14 +71,14 @@
     "@aws-amplify/core": "5.x"
   },
   "dependencies": {
-    "amazon-cognito-identity-js": "scoped-poc",
+    "amazon-cognito-identity-js": "6.2.0",
     "tslib": "^1.8.0"
   },
   "devDependencies": {
+    "@aws-amplify/core": "5.4.0",
     "@aws-sdk/client-cognito-identity-provider": "3.54.0",
     "@aws-sdk/client-cognito-identity": "3.54.0",
-    "@jest/test-sequencer": "^24.9.0",
-    "@aws-amplify/core": "scoped-poc"
+    "@jest/test-sequencer": "^24.9.0"
   },
   "size-limit": [
     {

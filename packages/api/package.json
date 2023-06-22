@@ -57,8 +57,8 @@
 		"index.*.d.ts"
 	],
 	"dependencies": {
-		"@aws-amplify/api-graphql": "scoped-poc",
-		"@aws-amplify/api-rest": "scoped-poc",
+		"@aws-amplify/api-graphql": "3.3.0",
+		"@aws-amplify/api-rest": "3.2.0",
 		"tslib": "^1.8.0"
 	},
 	"size-limit": [

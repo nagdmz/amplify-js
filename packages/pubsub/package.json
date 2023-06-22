@@ -41,7 +41,7 @@
   },
   "homepage": "https://aws-amplify.github.io/",
   "devDependencies": {
-    "@aws-amplify/core": "scoped-poc",
+    "@aws-amplify/core": "5.4.0",
     "@types/zen-observable": "^0.8.0",
     "cpx": "^1.5.0"
   },
@@ -54,8 +54,8 @@
     "src"
   ],
   "dependencies": {
-    "@aws-amplify/auth": "scoped-poc",
-    "@aws-amplify/cache": "scoped-poc",
+    "@aws-amplify/auth": "5.4.0",
+    "@aws-amplify/cache": "5.1.0",
     "graphql": "15.8.0",
     "tslib": "^1.8.0",
     "uuid": "^3.2.1",

@@ -2,6 +2,9 @@ import { ConsoleLogger as LoggerClass } from './Logger';
 
 const logger = new LoggerClass('Amplify');
 
+const testFunc = () => {
+	console.log('Code change');
+};
 export class AmplifyClass {
 	// Everything that is `register`ed is tracked here
 	private _components = [];

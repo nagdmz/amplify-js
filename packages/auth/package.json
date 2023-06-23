@@ -68,7 +68,7 @@
     "src"
   ],
   "peerDependencies": {
-    "@aws-amplify/core": "^5.4.0 || 5.4.0"
+    "@aws-amplify/core": "scoped-poc"
   },
   "dependencies": {
     "amazon-cognito-identity-js": "6.2.0",

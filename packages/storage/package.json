@@ -46,7 +46,7 @@
     "src"
   ],
   "peerDependencies": {
-    "@aws-amplify/core": "^5.4.0 || 5.4.0"
+    "@aws-amplify/core": "scoped-poc"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.6.2",

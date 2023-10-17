@@ -141,7 +141,8 @@ export class APIClass extends InternalAPIClass {
 							const query = generateGraphQLDocument(
 								modelIntrospection.models,
 								name,
-								operation
+								operation,
+								options
 							);
 							const variables = buildGraphQLVariables(
 								model,
@@ -160,16 +161,21 @@ export class APIClass extends InternalAPIClass {
 							// flatten response
 							if (res.data !== undefined) {
 								const [key] = Object.keys(res.data);
+								const flattenedResult = flattenItems(res.data)[key];
 
-								// TODO: refactor to avoid destructuring here
-								const [initialized] = initializeModel(
-									client,
-									name,
-									[res.data[key]],
-									modelIntrospection
-								);
+								if (options?.selectionSet) {
+									return flattenedResult;
+								} else {
+									// TODO: refactor to avoid destructuring here
+									const [initialized] = initializeModel(
+										client,
+										name,
+										[flattenedResult],
+										modelIntrospection
+									);
 
-								return initialized;
+									return initialized;
+								}
 							}
 
 							return res;

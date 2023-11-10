@@ -1,8 +1,12 @@
+concurrency:
+  # group name unique for push to push-integ-test
+  group: ashwin-canary-main-fix-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
-  # Tests scheduled at 4pm(UTC) / 9am(PDT) everyday
-  # default supported timezone is UTC
-  schedule:
-    - cron: '0 16 * * *'
+  push:
+    branches:
+      - ashwin-canary-main-fix
 
 jobs:
   canaries:

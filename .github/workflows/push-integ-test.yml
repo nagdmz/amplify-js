@@ -8,8 +8,7 @@ concurrency:
 on:
   push:
     branches:
-      - next/main
-
+      - ashwin-cci-test
 jobs:
   e2e:
     secrets: inherit

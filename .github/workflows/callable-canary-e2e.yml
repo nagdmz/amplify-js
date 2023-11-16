@@ -29,18 +29,18 @@ jobs:
   sample-app-tests:
     secrets: inherit
     uses: ./.github/workflows/callable-canary-sampleapp-tests.yml
-  slack-alert:
-    needs:
-      - e2e
-      - sample-app-tests
-    runs-on: ubuntu-latest
-    if: failure()
-    steps:
-      - name: Send slack message
-        env:
-          WORKFLOW_URL: '{ "URL": "${{ env.WORKFLOW_URL }}" }'
-          WEBHOOK_URL: ${{ env.WEBHOOK_URL }}
-        run: |
-          curl -X POST -H "Content-Type: application/json" \
-          --data "$WORKFLOW_URL" \
-          $WEBHOOK_URL
+#   slack-alert:
+#     needs:
+#       - e2e
+#       - sample-app-tests
+#     runs-on: ubuntu-latest
+#     if: failure()
+#     steps:
+#       - name: Send slack message
+#         env:
+#           WORKFLOW_URL: '{ "URL": "${{ env.WORKFLOW_URL }}" }'
+#           WEBHOOK_URL: ${{ env.WEBHOOK_URL }}
+#         run: |
+#           curl -X POST -H "Content-Type: application/json" \
+#           --data "$WORKFLOW_URL" \
+#           $WEBHOOK_URL
